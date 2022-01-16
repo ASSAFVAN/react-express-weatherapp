@@ -12,7 +12,13 @@ const app = express();
 
 app.use(express.json());
 
-app.get("/weather", (req, res) => {
+// app.get("/weather", (req, res) => {
+//   if (!req.query.address) {
+//     return res.send({
+//       error: "You must provide an address!",
+//     });
+//   }
+app.get("/", (req, res) => {
   if (!req.query.address) {
     return res.send({
       error: "You must provide an address!",
