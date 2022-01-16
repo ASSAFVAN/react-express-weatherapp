@@ -15,5 +15,8 @@
     "axios": "^0.24.0",
     "express": "^4.17.2",
     "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "mini-css-extract-plugin": "2.4.5"
   }
 }
