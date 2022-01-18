@@ -8,20 +8,19 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 
 // Setup static directory to serve
-// app.use(express.static(publicDirectoryPath));
 
 app.use(express.json());
 
-app.get("/", (req, res, next) => {
-  res.status(200).json({
-    status: "success",
-    data: {
-      name: "name of your app",
-      version: "0.1.0",
-    },
-  });
-  next();
-});
+// app.get("/", (req, res, next) => {
+//   res.status(200).json({
+//     status: "success",
+//     data: {
+//       name: "name of your app",
+//       version: "0.1.0",
+//     },
+//   });
+//   next();
+// });
 
 app.get("/weather", (req, res) => {
   if (!req.query.address) {
@@ -51,6 +50,15 @@ app.get("/weather", (req, res) => {
     }
   );
 });
+app.use(express.static(path.join(__dirname, "build")));
+
+app.get(
+  "/*",
+  (req,
+  (res) => {
+    res.sendFile(path.join(__dirname, "build", "index.html"));
+  })
+);
 
 app.listen(PORT, () => {
   console.log(`Server is up on port ${PORT}.`);
